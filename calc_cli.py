@@ -14,17 +14,18 @@ def calc(args):
             return args.x / args.y
         else:
             return "Something went wrong"
-    except:
-        return "Exception Occured"
+    except Exception as error:
+        #returns exception name as well
+        return f'An error occurred: {type(error).__name__}'
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--x', type=float, default=1.0,
-                        help='This is the first argument')
-    parser.add_argument('--y', type=float, default=3.0, 
+    parser.add_argument('n1', type=float, default=1.0,
+                        help='This is the first number')
+    parser.add_argument('n2', type=float, default=3.0, 
                         help='This is the second argument')
-    parser.add_argument('--o', type=str, default='add',
-                         help='This is the operator')
+    parser.add_argument('ops', type=str, default='add',
+                         help='This is the operation to be done')
     
     #parse_args function extracts data from command line and parses the data and assigns the data to attributes
     args = parser.parse_args()
